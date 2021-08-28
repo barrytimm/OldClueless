@@ -87,9 +87,15 @@
           "groupBy": [
             {
               "params": [
-                "10s"
+                "1m"
               ],
               "type": "time"
+            },
+            {
+              "params": [
+                "previous"
+              ],
+              "type": "fill"
             }
           ],
           "measurement": "SBMS_Metrics",
@@ -107,7 +113,7 @@
               },
               {
                 "params": [],
-                "type": "last"
+                "type": "mean"
               },
               {
                 "params": [
@@ -125,7 +131,7 @@
               },
               {
                 "params": [],
-                "type": "last"
+                "type": "mean"
               },
               {
                 "params": [
@@ -185,16 +191,12 @@
                 "value": null
               },
               {
-                "color": "orange",
+                "color": "yellow",
                 "value": 25
               },
               {
-                "color": "#EAB839",
-                "value": 50
-              },
-              {
                 "color": "green",
-                "value": 70
+                "value": 50
               },
               {
                 "color": "#6ED0E0",
@@ -242,13 +244,13 @@
           "groupBy": [
             {
               "params": [
-                "$__interval"
+                "1m"
               ],
               "type": "time"
             },
             {
               "params": [
-                "null"
+                "previous"
               ],
               "type": "fill"
             }
@@ -341,9 +343,15 @@
           "groupBy": [
             {
               "params": [
-                "10s"
+                "1m"
               ],
               "type": "time"
+            },
+            {
+              "params": [
+                "previous"
+              ],
+              "type": "fill"
             }
           ],
           "measurement": "SBMS_Metrics",
@@ -361,7 +369,7 @@
               },
               {
                 "params": [],
-                "type": "max"
+                "type": "mean"
               },
               {
                 "params": [
@@ -379,7 +387,7 @@
               },
               {
                 "params": [],
-                "type": "max"
+                "type": "mean"
               },
               {
                 "params": [
@@ -397,7 +405,7 @@
               },
               {
                 "params": [],
-                "type": "max"
+                "type": "mean"
               },
               {
                 "params": [
@@ -459,14 +467,13 @@
       "type": "stat"
     },
     {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
       "datasource": null,
+      "description": "",
       "fieldConfig": {
         "defaults": {
-          "custom": {},
+          "custom": {
+            "align": null
+          },
           "decimals": 0,
           "mappings": [],
           "max": 2000,
@@ -484,46 +491,43 @@
         },
         "overrides": []
       },
-      "fill": 5,
-      "fillGradient": 0,
       "gridPos": {
         "h": 6,
         "w": 7,
         "x": 0,
         "y": 6
       },
-      "hiddenSeries": false,
       "id": 49,
-      "legend": {
-        "avg": true,
-        "current": true,
-        "max": true,
-        "min": true,
-        "show": true,
-        "total": false,
-        "values": true
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "first"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "textMode": "auto"
       },
-      "lines": true,
-      "linewidth": 2,
-      "nullPointMode": "null",
-      "percentage": false,
       "pluginVersion": "7.1.1",
-      "pointradius": 2,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": true,
-      "steppedLine": false,
       "targets": [
         {
           "alias": "",
           "groupBy": [
             {
               "params": [
-                "10s"
+                "1m"
               ],
               "type": "time"
+            },
+            {
+              "params": [
+                "previous"
+              ],
+              "type": "fill"
             }
           ],
           "measurement": "SBMS_Metrics",
@@ -578,16 +582,9 @@
           ]
         }
       ],
-      "thresholds": [],
       "timeFrom": null,
-      "timeRegions": [],
       "timeShift": null,
       "title": "Solar PV Watts",
-      "tooltip": {
-        "shared": false,
-        "sort": 0,
-        "value_type": "individual"
-      },
       "transformations": [
         {
           "id": "calculateField",
@@ -608,36 +605,7 @@
         }
       ],
       "transparent": true,
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "format": "watt",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        },
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
+      "type": "stat"
     },
     {
       "aliasColors": {},
@@ -984,10 +952,6 @@
                 "value": 0
               },
               {
-                "id": "max",
-                "value": 0.2
-              },
-              {
                 "id": "unit",
                 "value": "mvolt"
               },
@@ -1013,6 +977,10 @@
                     }
                   ]
                 }
+              },
+              {
+                "id": "max",
+                "value": 0.2
               }
             ]
           },
@@ -1055,8 +1023,8 @@
         ]
       },
       "gridPos": {
-        "h": 6,
-        "w": 15,
+        "h": 7,
+        "w": 16,
         "x": 0,
         "y": 12
       },
@@ -1067,7 +1035,7 @@
         "orientation": "horizontal",
         "reduceOptions": {
           "calcs": [
-            "lastNotNull"
+            "first"
           ],
           "fields": "",
           "values": false
@@ -1077,14 +1045,14 @@
       "pluginVersion": "7.1.1",
       "targets": [
         {
-          "alias": "Cell 1",
+          "alias": "",
           "groupBy": [],
           "hide": false,
           "measurement": "SBMS_Metrics",
-          "orderByTime": "ASC",
+          "orderByTime": "DESC",
           "policy": "autogen",
           "query": "SELECT \"Cell 1\" FROM \"autogen\".\"SBMS_Metrics\" WHERE (\"Name\" = 'SBMS0a') AND $timeFilter",
-          "rawQuery": true,
+          "rawQuery": false,
           "refId": "A",
           "resultFormat": "time_series",
           "select": [
@@ -1094,255 +1062,110 @@
                   "Cell 1"
                 ],
                 "type": "field"
+              },
+              {
+                "params": [
+                  "Cell 1"
+                ],
+                "type": "alias"
               }
-            ]
-          ],
-          "tags": [
-            {
-              "key": "Name",
-              "operator": "=",
-              "value": "SBMS0a"
-            }
-          ]
-        },
-        {
-          "alias": "Cell 2",
-          "groupBy": [],
-          "hide": false,
-          "measurement": "SBMS_Metrics",
-          "orderByTime": "ASC",
-          "policy": "autogen",
-          "query": "SELECT \"Cell 2\" FROM \"autogen\".\"SBMS_Metrics\" WHERE (\"Name\" = 'SBMS0a') AND $timeFilter",
-          "rawQuery": true,
-          "refId": "B",
-          "resultFormat": "time_series",
-          "select": [
+            ],
             [
               {
                 "params": [
                   "Cell 2"
                 ],
                 "type": "field"
+              },
+              {
+                "params": [
+                  "Cell 2"
+                ],
+                "type": "alias"
               }
-            ]
-          ],
-          "tags": [
-            {
-              "key": "Name",
-              "operator": "=",
-              "value": "SBMS0a"
-            }
-          ]
-        },
-        {
-          "alias": "Cell 3",
-          "groupBy": [],
-          "measurement": "SBMS_Metrics",
-          "orderByTime": "ASC",
-          "policy": "autogen",
-          "query": "SELECT \"Cell 3\" FROM \"autogen\".\"SBMS_Metrics\" WHERE (\"Name\" = 'SBMS0a') AND $timeFilter",
-          "rawQuery": false,
-          "refId": "C",
-          "resultFormat": "time_series",
-          "select": [
+            ],
             [
               {
                 "params": [
                   "Cell 3"
                 ],
                 "type": "field"
+              },
+              {
+                "params": [
+                  "Cell 3"
+                ],
+                "type": "alias"
               }
-            ]
-          ],
-          "tags": [
-            {
-              "key": "Name",
-              "operator": "=",
-              "value": "SBMS0a"
-            }
-          ]
-        },
-        {
-          "alias": "Cell 4",
-          "groupBy": [],
-          "measurement": "SBMS_Metrics",
-          "orderByTime": "ASC",
-          "policy": "autogen",
-          "query": "SELECT \"Cell 4\" FROM \"autogen\".\"SBMS_Metrics\" WHERE (\"Name\" = 'SBMS0a') AND $timeFilter",
-          "rawQuery": true,
-          "refId": "D",
-          "resultFormat": "time_series",
-          "select": [
+            ],
             [
               {
                 "params": [
                   "Cell 4"
                 ],
                 "type": "field"
+              },
+              {
+                "params": [
+                  "Cell 4"
+                ],
+                "type": "alias"
               }
-            ]
-          ],
-          "tags": [
-            {
-              "key": "Name",
-              "operator": "=",
-              "value": "SBMS0a"
-            }
-          ]
-        },
-        {
-          "alias": "Cell 5",
-          "groupBy": [],
-          "measurement": "SBMS_Metrics",
-          "orderByTime": "ASC",
-          "policy": "autogen",
-          "query": "SELECT \"Cell 5\" FROM \"autogen\".\"SBMS_Metrics\" WHERE (\"Name\" = 'SBMS0a') AND $timeFilter",
-          "rawQuery": true,
-          "refId": "D",
-          "resultFormat": "time_series",
-          "select": [
+            ],
             [
               {
                 "params": [
                   "Cell 5"
                 ],
                 "type": "field"
+              },
+              {
+                "params": [
+                  "Cell 5"
+                ],
+                "type": "alias"
               }
-            ]
-          ],
-          "tags": [
-            {
-              "key": "Name",
-              "operator": "=",
-              "value": "SBMS0a"
-            }
-          ]
-        },
-        {
-          "alias": "Cell 6",
-          "groupBy": [],
-          "measurement": "SBMS_Metrics",
-          "orderByTime": "ASC",
-          "policy": "autogen",
-          "query": "SELECT \"Cell 6\" FROM \"autogen\".\"SBMS_Metrics\" WHERE (\"Name\" = 'SBMS0a') AND $timeFilter",
-          "rawQuery": true,
-          "refId": "D",
-          "resultFormat": "time_series",
-          "select": [
+            ],
             [
               {
                 "params": [
                   "Cell 6"
                 ],
                 "type": "field"
+              },
+              {
+                "params": [
+                  "Cell 6"
+                ],
+                "type": "alias"
               }
-            ]
-          ],
-          "tags": [
-            {
-              "key": "Name",
-              "operator": "=",
-              "value": "SBMS0a"
-            }
-          ]
-        },
-        {
-          "alias": "Cell 7",
-          "groupBy": [],
-          "measurement": "SBMS_Metrics",
-          "orderByTime": "ASC",
-          "policy": "autogen",
-          "query": "SELECT \"Cell 7\" FROM \"autogen\".\"SBMS_Metrics\" WHERE (\"Name\" = 'SBMS0a') AND $timeFilter",
-          "rawQuery": true,
-          "refId": "D",
-          "resultFormat": "time_series",
-          "select": [
+            ],
             [
               {
                 "params": [
                   "Cell 7"
                 ],
                 "type": "field"
+              },
+              {
+                "params": [
+                  "Cell 7"
+                ],
+                "type": "alias"
               }
-            ]
-          ],
-          "tags": [
-            {
-              "key": "Name",
-              "operator": "=",
-              "value": "SBMS0a"
-            }
-          ]
-        },
-        {
-          "alias": "Cell 8",
-          "groupBy": [],
-          "measurement": "SBMS_Metrics",
-          "orderByTime": "ASC",
-          "policy": "autogen",
-          "query": "SELECT \"Cell 8\" FROM \"autogen\".\"SBMS_Metrics\" WHERE (\"Name\" = 'SBMS0a') AND $timeFilter",
-          "rawQuery": true,
-          "refId": "D",
-          "resultFormat": "time_series",
-          "select": [
+            ],
             [
               {
                 "params": [
                   "Cell 8"
                 ],
                 "type": "field"
-              }
-            ]
-          ],
-          "tags": [
-            {
-              "key": "Name",
-              "operator": "=",
-              "value": "SBMS0a"
-            }
-          ]
-        },
-        {
-          "alias": "Cell Delta",
-          "groupBy": [],
-          "measurement": "SBMS_Metrics",
-          "orderByTime": "ASC",
-          "policy": "autogen",
-          "refId": "E",
-          "resultFormat": "time_series",
-          "select": [
-            [
+              },
               {
                 "params": [
-                  "Cell Delta"
+                  "Cell 8"
                 ],
-                "type": "field"
-              }
-            ]
-          ],
-          "tags": [
-            {
-              "key": "Name",
-              "operator": "=",
-              "value": "SBMS0a"
-            }
-          ]
-        },
-        {
-          "alias": "Battery Bank",
-          "groupBy": [],
-          "measurement": "SBMS_Metrics",
-          "orderByTime": "ASC",
-          "policy": "autogen",
-          "refId": "F",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "Battery Voltage"
-                ],
-                "type": "field"
+                "type": "alias"
               }
             ]
           ],
@@ -1363,65 +1186,92 @@
     },
     {
       "datasource": "InfluxDB",
+      "description": "",
       "fieldConfig": {
         "defaults": {
-          "custom": {},
+          "custom": {
+            "align": null
+          },
+          "decimals": 0,
           "mappings": [],
           "thresholds": {
-            "mode": "absolute",
+            "mode": "percentage",
             "steps": [
               {
-                "color": "dark-yellow",
+                "color": "green",
                 "value": null
+              },
+              {
+                "color": "yellow",
+                "value": 50
+              },
+              {
+                "color": "red",
+                "value": 75
               }
             ]
-          }
+          },
+          "unit": "mvolt"
         },
         "overrides": []
       },
       "gridPos": {
-        "h": 2,
-        "w": 7,
+        "h": 5,
+        "w": 4,
         "x": 16,
         "y": 12
       },
-      "id": 10,
+      "id": 39,
       "options": {
-        "colorMode": "background",
-        "graphMode": "area",
-        "justifyMode": "center",
-        "orientation": "horizontal",
         "reduceOptions": {
           "calcs": [
-            "lastNotNull"
+            "first"
           ],
           "fields": "",
           "values": false
         },
-        "textMode": "value"
+        "showThresholdLabels": false,
+        "showThresholdMarkers": true
       },
       "pluginVersion": "7.1.1",
       "targets": [
         {
-          "groupBy": [],
+          "groupBy": [
+            {
+              "params": [
+                "1m"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "previous"
+              ],
+              "type": "fill"
+            }
+          ],
           "measurement": "SBMS_Metrics",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "query": "SELECT last(\"Monitor Flags\") FROM \"SBMS_Metrics\" WHERE (\"Name\" = 'SBMS0a') AND $timeFilter",
-          "rawQuery": false,
+          "orderByTime": "DESC",
+          "policy": "autogen",
           "refId": "A",
           "resultFormat": "time_series",
           "select": [
             [
               {
                 "params": [
-                  "Monitor Flags"
+                  "Cell Delta"
                 ],
                 "type": "field"
               },
               {
                 "params": [],
-                "type": "last"
+                "type": "min"
+              },
+              {
+                "params": [
+                  "*1000"
+                ],
+                "type": "math"
               }
             ]
           ],
@@ -1436,9 +1286,110 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Monitor Flags",
+      "title": "Cells Delta",
       "transparent": true,
-      "type": "stat"
+      "type": "gauge"
+    },
+    {
+      "datasource": "InfluxDB",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "align": null
+          },
+          "decimals": 2,
+          "mappings": [],
+          "max": 29,
+          "min": 22,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "yellow",
+                "value": null
+              },
+              {
+                "color": "green",
+                "value": 25
+              },
+              {
+                "color": "red",
+                "value": 28
+              }
+            ]
+          },
+          "unit": "volt"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 4,
+        "x": 20,
+        "y": 12
+      },
+      "id": 51,
+      "options": {
+        "reduceOptions": {
+          "calcs": [
+            "first"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showThresholdLabels": false,
+        "showThresholdMarkers": true
+      },
+      "pluginVersion": "7.1.1",
+      "targets": [
+        {
+          "groupBy": [
+            {
+              "params": [
+                "1m"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "previous"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "SBMS_Metrics",
+          "orderByTime": "DESC",
+          "policy": "autogen",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "Battery Voltage"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "Name",
+              "operator": "=",
+              "value": "SBMS0a"
+            }
+          ]
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Battery Bank",
+      "transparent": true,
+      "type": "gauge"
     },
     {
       "cacheTimeout": null,
@@ -1467,9 +1418,9 @@
       },
       "gridPos": {
         "h": 2,
-        "w": 5,
-        "x": 17,
-        "y": 14
+        "w": 4,
+        "x": 16,
+        "y": 17
       },
       "id": 12,
       "interval": null,
@@ -1556,6 +1507,85 @@
       "valueName": "last_time"
     },
     {
+      "datasource": "InfluxDB",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {},
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "dark-yellow",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 4,
+        "x": 20,
+        "y": 17
+      },
+      "id": 10,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "area",
+        "justifyMode": "center",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "textMode": "value"
+      },
+      "pluginVersion": "7.1.1",
+      "targets": [
+        {
+          "groupBy": [],
+          "measurement": "SBMS_Metrics",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "SELECT last(\"Monitor Flags\") FROM \"SBMS_Metrics\" WHERE (\"Name\" = 'SBMS0a') AND $timeFilter",
+          "rawQuery": false,
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "Monitor Flags"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "last"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "Name",
+              "operator": "=",
+              "value": "SBMS0a"
+            }
+          ]
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Monitor Flags",
+      "transparent": true,
+      "type": "stat"
+    },
+    {
       "datasource": null,
       "fieldConfig": {
         "defaults": {
@@ -1591,7 +1621,7 @@
         "h": 1,
         "w": 5,
         "x": 0,
-        "y": 18
+        "y": 19
       },
       "id": 42,
       "options": {
@@ -1684,7 +1714,7 @@
         "h": 1,
         "w": 5,
         "x": 6,
-        "y": 18
+        "y": 19
       },
       "id": 47,
       "options": {
@@ -1770,7 +1800,7 @@
         "h": 1,
         "w": 5,
         "x": 13,
-        "y": 18
+        "y": 19
       },
       "id": 43,
       "options": {
@@ -1856,7 +1886,7 @@
         "h": 8,
         "w": 1,
         "x": 0,
-        "y": 19
+        "y": 20
       },
       "id": 31,
       "options": {
@@ -1935,7 +1965,7 @@
         "h": 1,
         "w": 6,
         "x": 9,
-        "y": 19
+        "y": 20
       },
       "id": 46,
       "options": {
@@ -2018,174 +2048,9 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 1,
-        "w": 5,
-        "x": 6,
-        "y": 20
-      },
-      "id": 39,
-      "options": {
-        "reduceOptions": {
-          "calcs": [
-            "mean"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "showThresholdLabels": false,
-        "showThresholdMarkers": true
-      },
-      "pluginVersion": "7.1.1",
-      "targets": [
-        {
-          "groupBy": [
-            {
-              "params": [
-                "$__interval"
-              ],
-              "type": "time"
-            },
-            {
-              "params": [
-                "null"
-              ],
-              "type": "fill"
-            }
-          ],
-          "orderByTime": "ASC",
-          "policy": "default",
-          "refId": "A",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "value"
-                ],
-                "type": "field"
-              },
-              {
-                "params": [],
-                "type": "mean"
-              }
-            ]
-          ],
-          "tags": []
-        }
-      ],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "",
-      "transparent": true,
-      "type": "gauge"
-    },
-    {
-      "datasource": null,
-      "fieldConfig": {
-        "defaults": {
-          "custom": {
-            "align": null
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          }
-        },
-        "overrides": []
-      },
-      "gridPos": {
         "h": 7,
         "w": 1,
-        "x": 13,
-        "y": 20
-      },
-      "id": 33,
-      "options": {
-        "content": "",
-        "mode": "markdown"
-      },
-      "pluginVersion": "7.1.0",
-      "targets": [
-        {
-          "groupBy": [
-            {
-              "params": [
-                "$__interval"
-              ],
-              "type": "time"
-            },
-            {
-              "params": [
-                "null"
-              ],
-              "type": "fill"
-            }
-          ],
-          "orderByTime": "ASC",
-          "policy": "default",
-          "refId": "A",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "value"
-                ],
-                "type": "field"
-              },
-              {
-                "params": [],
-                "type": "mean"
-              }
-            ]
-          ],
-          "tags": []
-        }
-      ],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "",
-      "transparent": true,
-      "type": "text"
-    },
-    {
-      "datasource": null,
-      "fieldConfig": {
-        "defaults": {
-          "custom": {
-            "align": null
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          }
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 7,
-        "w": 1,
-        "x": 10,
+        "x": 11,
         "y": 21
       },
       "id": 30,
@@ -2262,10 +2127,89 @@
         "overrides": []
       },
       "gridPos": {
+        "h": 7,
+        "w": 1,
+        "x": 13,
+        "y": 21
+      },
+      "id": 33,
+      "options": {
+        "content": "",
+        "mode": "markdown"
+      },
+      "pluginVersion": "7.1.0",
+      "targets": [
+        {
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": []
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "",
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "align": null
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
         "h": 1,
         "w": 12,
         "x": 12,
-        "y": 27
+        "y": 28
       },
       "id": 34,
       "options": {
@@ -2332,7 +2276,7 @@
     "list": []
   },
   "time": {
-    "from": "now-6h",
+    "from": "now-24h",
     "to": "now"
   },
   "timepicker": {
@@ -2352,5 +2296,5 @@
   "timezone": "",
   "title": "SBMS0 RV (300 Ah @ 24V LifeP04 / 1890w PV )",
   "uid": "nKepvykRz",
-  "version": 307
+  "version": 411
 }
